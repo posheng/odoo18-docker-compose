@@ -90,8 +90,15 @@ This command will stop and remove all containers defined in your docker-compose.
 docker-compose down -v
 ```
 
-# 服務與 URL
-|服務名稱	|說明	|URL
+# Service and URL
+|Service 	|Description	|URL
 |--	|--	|--
-|Odoo	|Odoo Web 介面	|http://localhost:8069
-|PgAdmin	|PostgreSQL 管理工具	|http://localhost:8080
+|Odoo	|Odoo Web Interface	|http://localhost:8069
+|PgAdmin	|PostgreSQL Management Tool	|http://localhost:8080
+
+# Precautions
+1. Environment Variables: All passwords and environment variables are stored in the .env file. Please modify them according to your needs.
+2. Data Persistence: The directories odoo-web-data, odoo-config, odoo-addons, odoo-db-data, and pgadmin-data will store data. Do not delete them unless you need to reset the system.
+3. Container Dependencies: Odoo must wait for PostgreSQL to start before it can run, so depends_on is set to ensure the correct order.
+4. Permission Issues: If you encounter permission errors with Odoo or PgAdmin, please run fix_permissions.sh to fix them.
+5. Security: Be sure to change the default passwords in .env to enhance system security.
